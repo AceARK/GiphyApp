@@ -7,6 +7,14 @@ var buttonArray = ["Star Wars","Terminator","X-men","Avengers","Transformers","S
 
 $(document).ready(function(event) {
 	generateButtons();
+	$("#addToButtons").on("click", function(clickEvent){
+		clickEvent.preventDefault();
+		console.log($("#searchPhrase").val());
+		console.log(buttonArray);
+		buttonArray.push($("#searchPhrase").val());
+		console.log(buttonArray);
+		generateButtons();
+	});
 });
 
 function generateButtons() {
