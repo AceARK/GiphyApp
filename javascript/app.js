@@ -9,12 +9,16 @@ $(document).ready(function(event) {
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent){
 		clickEvent.preventDefault();
-		console.log($("#searchPhrase").val());
-		console.log(buttonArray);
 		buttonArray.push($("#searchPhrase").val());
-		console.log(buttonArray);
 		generateButtons();
 	});
+
+	$(".giphyButtons").on("click", function() {
+		// get button data value 
+		// put value as query term in ajax search function
+		var buttonData = $(this).data("value");
+		getGiphys(buttonData);
+	})
 });
 
 function generateButtons() {
@@ -24,4 +28,26 @@ function generateButtons() {
 		button.data("value",buttonArray[i]).text(buttonArray[i]);
 		$("#buttonDisplay").append(button);
 	}
+}
+
+function getGiphys(searchTerm) {
+	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=20&q=" + searchTerm;
+	$.ajax({
+		url: queryURL,
+		method: 'GET'
+	}).done(function(response) {
+		console.log(response);
+		var responseData = response.data;
+		for(var i=0; i<10; i++) {
+			if(responseData[i].rating !== 'r' && responseData[i].rating !== 'pg-13') {
+				var giphyDiv = $('<div class="giphyDiv">');
+				var giphy = $('<img class ="giphyImage">');
+				giphy.attr('src',responseData[i].images.fixed_height_downsampled.url);
+				giphyDiv.append(giphy);
+				giphyDiv.append("<p>" + responseData[i].rating + "</p>");
+				$('#giphyDisplay').append(giphyDiv);
+			}
+		}
+	});
+
 }
