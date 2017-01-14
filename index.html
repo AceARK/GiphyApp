@@ -2,15 +2,33 @@
 <html>
 <head>
 	<title>Giphy app</title>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script type="text/javascript" src="javascript/app.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-sm-4 col-sm-offset-3">
 				<form id="giphySearch">
-				  <input type="text" name="searchPhrase" plcaeholder="Search term for Giphy">
-				  <button id="addToButtons">Generate button for it</button>
+				  <input type="text" id="searchPhrase" placeholder="Giphy search term">
+				  <button id="addToButtons">Generate button</button>
+				  <button id="clearDisplay">Clear Giphys</button>
 				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="buttonDisplay"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="giphyDisplay"></div>
 			</div>
 		</div>
 	</div>
