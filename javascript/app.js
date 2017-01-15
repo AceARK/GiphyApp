@@ -15,7 +15,8 @@ $(document).ready(function(event) {
 		}
 	});
 
-	$("#clearDisplay").on("click", function() {
+	$("#clearDisplay").on("click", function(clickEvent) {
+		clickEvent.preventDefault();
 		$("#giphyDisplay").empty(); // avoiding using function clearDiv here since no other functionality is executed on clear i.e this is shorter
 	})
 
