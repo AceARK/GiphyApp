@@ -4,6 +4,8 @@
 // Button.on click should make ajax call to giphy and get 10 giphys in giphyDisplay 
 // Clear button that clears giphys in giphyDisplay div
 var topics = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tiger","tortoise","coffee","orange","green","blue","violet"];
+var randomIndex = 0;
+var usedRandomIndex = [];
 
 $(document).ready(function(event) {
 	generateButtons();
@@ -31,13 +33,17 @@ function generateButtons() {
 	}
 	$(".giphyButtons").off("click").on("click", function() {
 		var buttonData = $(this).data("value");
+		randomIndex = 0;
+		usedRandomIndex = [];
 		getGiphys(buttonData);
 		$("#searchPhrase").val("");
 	});
 }
 
 function getGiphys(searchTerm) {
-	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=10&rating=pg&q=" + searchTerm;
+	// PseudoCode change: Using random indices to select 10 random gifs from 100 gifs got via ajax call 
+	// ** I got bored seeing same ones over and over again; Why would the users? **
+	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
@@ -45,13 +51,21 @@ function getGiphys(searchTerm) {
 		$("#giphyDisplay").empty();
 		console.log(response);
 		var responseData = response.data;
+		// Looping 10 times for 10 gifs
 		for(var i=0; i<10; i++) {
+			// Getting a random index that has not been used before 
+			randomIndex = Math.floor(Math.random()*responseData.length);
+			while(usedRandomIndex.indexOf(randomIndex) != -1) {
+				randomIndex = Math.floor(Math.random()*responseData.length);
+			}
+			usedRandomIndex.push(randomIndex);
+			// Creating gif divs to hold giphy at random index
 			var giphyDiv = $('<div class="giphyDiv">');
 			var giphy = $('<img class ="giphyImage img-responsive">');
-			giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"still"});
-			giphy.attr('src',responseData[i].images.original_still.url);
+			giphy.attr({"data-still":responseData[randomIndex].images.original_still.url, "data-animated":responseData[randomIndex].images.original.url, "data-state":"still"});
+			giphy.attr('src',responseData[randomIndex].images.original_still.url);
 			giphyDiv.append(giphy);
-			giphyDiv.append("<p>" + responseData[i].rating + "</p>");
+			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
 		}
 		$(".giphyImage").off("click").on("click", function() {
