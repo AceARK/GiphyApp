@@ -1,3 +1,28 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: url("../images/bg.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
+}
+h3 {
+	margin-top: 20px;
+}
+
+h3, h5 {
+	font-weight: 500;
+	color: white;
+}
+
+form {
+	margin: 10px;
+}
+
+/* Default button style */
 .btn-2c:hover {
     box-shadow: 0 7px #ab3c3c;
     top: 3px;
@@ -20,13 +45,14 @@
     color: inherit;
     cursor: pointer;
     min-width: 150px;
-    padding: 15px 10px;
+    padding: 10px 10px;
     display: inline-block;
     margin: 15px 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
     outline: none;
+    font-size: 18px;
     position: relative;
 }
 
@@ -35,20 +61,60 @@
 	top: 8px;
 }
 
+/* Styling dynamically generated buttons */
+.giphyButtons {
+	font-size: 15px;
+	min-width: 130px;
+	background: #17aa56;
+}
+
+#buttonDisplay>.btn-2c:hover {
+	box-shadow: 0 7px #0a833d;
+}
+
+#buttonDisplay>.btn-2c {
+	box-shadow: 0 9px #0a833d;
+}
+
+#buttonDisplay>.btn-2c:active {
+	box-shadow: none;
+}
+
 .button, #searchPhrase {
    outline: none !important;
 }
 
+/* Styling input box */
 #searchPhrase {
 	width: 30%;
 	margin-top: 15px;
-	height: 50px;
+	height: 45px;
+	top: 10px;
 	border-radius: 8px;
 	font-size: 20px;
+	color: #ff8002;
+	font-weight: 600;
 }
 
 #searchPhrase:focus {
 	border-style: solid;
     border-width: 3px 1px 1px 3px;
     border-color: orange;
+}
+
+/* Styling individual spans */
+#yellow {
+	color: #f7a04a;
+}
+
+#red {
+	color: #ff6666;
+}
+
+.green {
+	color: #29e87b;
+}
+
+span {
+	font-size: 22px;
 }
