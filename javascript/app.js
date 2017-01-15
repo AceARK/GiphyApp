@@ -13,13 +13,6 @@ $(document).ready(function(event) {
 		generateButtons();
 	});
 
-	$(".giphyButtons").on("click", function() {
-		// get button data value 
-		// put value as query term in ajax search function
-		var buttonData = $(this).data("value");
-		getGiphys(buttonData);
-	});
-
 });
 
 function generateButtons() {
@@ -29,6 +22,10 @@ function generateButtons() {
 		button.data("value",buttonArray[i]).text(buttonArray[i]);
 		$("#buttonDisplay").append(button);
 	}
+	$(".giphyButtons").off("click").on("click", function() {
+		var buttonData = $(this).data("value");
+		getGiphys(buttonData);
+	});
 }
 
 function getGiphys(searchTerm) {
