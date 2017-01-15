@@ -32,7 +32,7 @@ function generateButtons() {
 }
 
 function getGiphys(searchTerm) {
-	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=20&q=" + searchTerm;
+	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=10&rating=pg&q=" + searchTerm;
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
@@ -40,15 +40,13 @@ function getGiphys(searchTerm) {
 		console.log(response);
 		var responseData = response.data;
 		for(var i=0; i<10; i++) {
-			if(responseData[i].rating !== 'r' && responseData[i].rating !== 'pg-13') {
-				var giphyDiv = $('<div class="giphyDiv">');
-				var giphy = $('<img class ="giphyImage img-responsive">');
-				giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"animated"});
-				giphy.attr('src',responseData[i].images.original.url);
-				giphyDiv.append(giphy);
-				giphyDiv.append("<p>" + responseData[i].rating + "</p>");
-				$('#giphyDisplay').append(giphyDiv);
-			}
+			var giphyDiv = $('<div class="giphyDiv">');
+			var giphy = $('<img class ="giphyImage img-responsive">');
+			giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"animated"});
+			giphy.attr('src',responseData[i].images.original.url);
+			giphyDiv.append(giphy);
+			giphyDiv.append("<p>" + responseData[i].rating + "</p>");
+			$('#giphyDisplay').append(giphyDiv);
 		}
 		$(".giphyImage").off("click").on("click", function() {
 			console.log("entering click function");
