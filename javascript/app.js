@@ -7,11 +7,15 @@ var buttonArray = ["stars","kitten","moon","wolf","lilies","Supernatural","keys"
 
 $(document).ready(function(event) {
 	generateButtons();
-	$("#addToButtons").on("click", function(clickEvent){
+	$("#addToButtons").on("click", function(clickEvent) {
 		clickEvent.preventDefault();
 		buttonArray.push($("#searchPhrase").val());
 		generateButtons();
 	});
+
+	$("#clearDisplay").on("click", function() {
+		$("#giphyDisplay").empty();
+	})
 
 });
 
