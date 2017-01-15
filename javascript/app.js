@@ -3,27 +3,27 @@
 // Generate button on click, should add the words in input field to array, and call function to generate buttons in buttonDisplay div
 // Button.on click should make ajax call to giphy and get 10 giphys in giphyDisplay 
 // Clear button that clears giphys in giphyDisplay div
-var buttonArray = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tiger","tortoise","coffee","orange","green","blue","violet"];
+var topics = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tiger","tortoise","coffee","orange","green","blue","violet"];
 
 $(document).ready(function(event) {
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent) {
 		clickEvent.preventDefault();
-		buttonArray.push($("#searchPhrase").val());
+		topics.push($("#searchPhrase").val());
 		generateButtons();
 	});
 
 	$("#clearDisplay").on("click", function() {
-		$("#giphyDisplay").empty();
+		$("#giphyDisplay").empty(); // avoiding using function clearDiv here since no other functionality is executed on clear i.e this is shorter
 	})
 
 });
 
 function generateButtons() {
 	$("#buttonDisplay").empty();
-	for(var i=0; i<buttonArray.length; i++) {
+	for(var i=0; i<topics.length; i++) {
 		var button = $('<button class="giphyButtons btn btn-lg btn-success">');
-		button.data("value",buttonArray[i]).text(buttonArray[i]);
+		button.data("value",topics[i]).text(topics[i]);
 		$("#buttonDisplay").append(button);
 	}
 	$(".giphyButtons").off("click").on("click", function() {
