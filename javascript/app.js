@@ -59,11 +59,11 @@ function getGiphys(searchTerm) {
 				randomIndex = Math.floor(Math.random()*responseData.length);
 			}
 			usedRandomIndex.push(randomIndex);
-			// Creating gif divs to hold giphy at random index
+			// Creating gif divs to hold giphy
 			var giphyDiv = $('<div class="giphyDiv">');
 			var giphy = $('<img class ="giphyImage img-responsive">');
-			giphy.attr({"data-still":responseData[randomIndex].images.original_still.url, "data-animated":responseData[randomIndex].images.original.url, "data-state":"still"});
-			giphy.attr('src',responseData[randomIndex].images.original_still.url);
+			giphy.attr({"data-still":responseData[randomIndex].images.downsized_still.url, "data-animated":responseData[randomIndex].images.downsized.url, "data-state":"still"});
+			giphy.attr('src',responseData[randomIndex].images.downsized_still.url);
 			giphyDiv.append(giphy);
 			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
