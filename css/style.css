@@ -1,0 +1,38 @@
+.btn-2c:hover {
+    box-shadow: 0 7px #ab3c3c;
+    top: 3px;
+}
+
+.btn-2c {
+    border-radius: 10px;
+}
+
+.btn-2 {
+    background: #cb4e4e;
+    color: #fff;
+    box-shadow: 0 10px #ab3c3c;
+ }
+
+.button {
+	text-decoration: none;
+    border: none;
+    background: #cb4e4e;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    min-width: 200px;
+    padding: 20px 25px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+}
+
+.btn-2c:active {
+	box-shadow: none;
+	top: 8px;
+}
