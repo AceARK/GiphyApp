@@ -29,6 +29,7 @@ function generateButtons() {
 	$(".giphyButtons").off("click").on("click", function() {
 		var buttonData = $(this).data("value");
 		getGiphys(buttonData);
+		$("#searchPhrase").val("");
 	});
 }
 
