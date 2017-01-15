@@ -3,7 +3,7 @@
 // Generate button on click, should add the words in input field to array, and call function to generate buttons in buttonDisplay div
 // Button.on click should make ajax call to giphy and get 10 giphys in giphyDisplay 
 // Clear button that clears giphys in giphyDisplay div
-var topics = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tiger","tortoise","coffee","orange","green","blue","violet"];
+var topics = ["bubbles","rainbow","moon","unicorn","stars","plush","twinkle","pink","shiny shoes","dancing","kittens","puppies"];
 var randomIndex = 0;
 var usedRandomIndex = [];
 
