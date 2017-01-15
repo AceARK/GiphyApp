@@ -8,9 +8,11 @@ var topics = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tig
 $(document).ready(function(event) {
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent) {
-		clickEvent.preventDefault();
-		topics.push($("#searchPhrase").val());
-		generateButtons();
+		if($("#searchPhrase").val()) {
+			clickEvent.preventDefault();
+			topics.push($("#searchPhrase").val());
+			generateButtons();
+		}
 	});
 
 	$("#clearDisplay").on("click", function() {

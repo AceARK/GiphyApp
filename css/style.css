@@ -38,3 +38,7 @@
 .button {
    outline: none !important;
 }
+
+#message {
+	display: none;
+}
