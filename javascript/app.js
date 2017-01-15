@@ -45,8 +45,8 @@ function getGiphys(searchTerm) {
 		for(var i=0; i<10; i++) {
 			var giphyDiv = $('<div class="giphyDiv">');
 			var giphy = $('<img class ="giphyImage img-responsive">');
-			giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"animated"});
-			giphy.attr('src',responseData[i].images.original.url);
+			giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"still"});
+			giphy.attr('src',responseData[i].images.original_still.url);
 			giphyDiv.append(giphy);
 			giphyDiv.append("<p>" + responseData[i].rating + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
