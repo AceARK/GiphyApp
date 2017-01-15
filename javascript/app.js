@@ -3,7 +3,7 @@
 // Generate button on click, should add the words in input field to array, and call function to generate buttons in buttonDisplay div
 // Button.on click should make ajax call to giphy and get 10 giphys in giphyDisplay 
 // Clear button that clears giphys in giphyDisplay div
-var buttonArray = ["Star Wars","Terminator","X-men","Avengers","Transformers","Supernatural","Fringe","Lost","Jurassic Park","Guardians of The Galaxy"];
+var buttonArray = ["stars","kitten","moon","wolf","lilies","Supernatural","keys","tiger","tortoise","coffee","orange","green","blue","violet"];
 
 $(document).ready(function(event) {
 	generateButtons();
@@ -18,7 +18,8 @@ $(document).ready(function(event) {
 		// put value as query term in ajax search function
 		var buttonData = $(this).data("value");
 		getGiphys(buttonData);
-	})
+	});
+
 });
 
 function generateButtons() {
@@ -41,13 +42,19 @@ function getGiphys(searchTerm) {
 		for(var i=0; i<10; i++) {
 			if(responseData[i].rating !== 'r' && responseData[i].rating !== 'pg-13') {
 				var giphyDiv = $('<div class="giphyDiv">');
-				var giphy = $('<img class ="giphyImage">');
-				giphy.attr('src',responseData[i].images.fixed_height_downsampled.url);
+				var giphy = $('<img class ="giphyImage img-responsive">');
+				giphy.attr({"data-still":responseData[i].images.original_still.url, "data-animated":responseData[i].images.original.url, "data-state":"animated"});
+				giphy.attr('src',responseData[i].images.original.url);
 				giphyDiv.append(giphy);
 				giphyDiv.append("<p>" + responseData[i].rating + "</p>");
 				$('#giphyDisplay').append(giphyDiv);
 			}
 		}
-	});
+		$(".giphyImage").off("click").on("click", function() {
+			console.log("entering click function");
+			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
+			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
 
+		});
+	});
 }
