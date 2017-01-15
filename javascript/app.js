@@ -22,7 +22,7 @@ $(document).ready(function(event) {
 function generateButtons() {
 	$("#buttonDisplay").empty();
 	for(var i=0; i<buttonArray.length; i++) {
-		var button = $('<button class="giphyButtons">');
+		var button = $('<button class="giphyButtons btn btn-lg btn-success">');
 		button.data("value",buttonArray[i]).text(buttonArray[i]);
 		$("#buttonDisplay").append(button);
 	}
