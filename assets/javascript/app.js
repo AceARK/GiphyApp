@@ -31,6 +31,7 @@ $(document).ready(function(event) {
 		$("#buttonSelectSound")[0].currentTime = 0;
     	$("#buttonSelectSound")[0].play();
 		clickEvent.preventDefault();
+		$("#message").hide();
 		$("#giphyDisplay").empty(); // avoiding using function clearDiv here since no other functionality is executed on clear i.e this is shorter
 	})
 
