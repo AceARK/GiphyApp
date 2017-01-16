@@ -2,11 +2,12 @@
 // Buttons array with words, on load of page, call function that displays all words as buttons
 // Generate button on click, should add the words in input field to array, and call function to generate buttons in buttonDisplay div
 // Clear button that clears giphys in giphyDisplay div
-var topics = ["bubbles","rainbow","moon","unicorn","stars","plush","twinkle","pink","shiny shoes","dancing","kittens","puppies"];
+var topics = ["bubbles","kittens","puppies","rainbow","teddy bear","unicorn","twinkle stars","cute doll","pink","ballet"];
 var randomIndex = 0;
 var usedRandomIndex = [];
 
 $(document).ready(function(event) {
+	$("#message").hide();
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent) {
 		if($("#searchPhrase").val()) {
@@ -64,7 +65,7 @@ function getGiphys(searchTerm) {
 			giphy.attr({"data-still":responseData[randomIndex].images.downsized_still.url, "data-animated":responseData[randomIndex].images.downsized.url, "data-state":"still"});
 			giphy.attr('src',responseData[randomIndex].images.downsized_still.url);
 			giphyDiv.append(giphy);
-			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating + "</p>");
+			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating.toUpperCase() + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
 		}
 		$(".giphyImage").off("click").on("click", function() {
@@ -73,5 +74,6 @@ function getGiphys(searchTerm) {
 			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
 
 		});
+		$("#message").show();
 	});
 }

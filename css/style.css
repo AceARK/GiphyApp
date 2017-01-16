@@ -134,6 +134,21 @@ span {
 }
 
 .giphyImage {
-	max-height: 200px;
-	max-width: 300px;
+	max-height: 180px;
+	max-width: 280px;
+}
+
+/* message style */
+#message {
+	margin: 10px;
+	margin-top: 15px;
+	display: none;
+	font-size: 23px;
+	font-weight: 700;
+	color: #ffd36d;
+}
+
+#important {
+	color: #ffff84;
+	font-size: 26px;
 }
