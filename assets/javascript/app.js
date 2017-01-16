@@ -10,6 +10,8 @@ $(document).ready(function(event) {
 	$("#message").hide();
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent) {
+		$("#buttonSelectSound")[0].currentTime = 0;
+    	$("#buttonSelectSound")[0].play();
 		var searchValue = $("#searchPhrase").val();
 		if($("#searchPhrase").val()) {
 			clickEvent.preventDefault();
@@ -26,6 +28,8 @@ $(document).ready(function(event) {
 	});
 
 	$("#clearDisplay").on("click", function(clickEvent) {
+		$("#buttonSelectSound")[0].currentTime = 0;
+    	$("#buttonSelectSound")[0].play();
 		clickEvent.preventDefault();
 		$("#giphyDisplay").empty(); // avoiding using function clearDiv here since no other functionality is executed on clear i.e this is shorter
 	})
@@ -40,6 +44,8 @@ function generateButtons() {
 		$("#buttonDisplay").append(button);
 	}
 	$(".giphyButtons").off("click").on("click", function() {
+		$("#buttonSelectSound")[0].currentTime = 0;
+    	$("#buttonSelectSound")[0].play();
 		var buttonData = $(this).data("value");
 		buttonData = buttonData.replace(" ","+");
 		randomIndex = 0;
@@ -51,7 +57,7 @@ function generateButtons() {
 
 function getGiphys(searchTerm) {
 	// PseudoCode change: Using random indices to select 10 random gifs from 100 gifs got via ajax call 
-	// ** I got bored seeing same ones over and over again; Why wouldn't the users? **
+	// ** Got bored seeing same ones over and over again; Why wouldn't the users? **
 	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
 	$.ajax({
 		url: queryURL,
