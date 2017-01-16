@@ -58,7 +58,7 @@ function generateButtons() {
 function getGiphys(searchTerm) {
 	// PseudoCode change: Using random indices to select 10 random gifs from 100 gifs got via ajax call 
 	// ** Got bored seeing same ones over and over again; Why wouldn't the users? **
-	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
+	var queryURL = "https://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
@@ -84,6 +84,8 @@ function getGiphys(searchTerm) {
 			$('#giphyDisplay').append(giphyDiv);
 		}
 		$(".giphyImage").off("click").on("click", function() {
+			$("#gifClickSound")[0].currentTime = 0;
+    		$("#gifClickSound")[0].play();
 			console.log("entering click function");
 			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
 			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
