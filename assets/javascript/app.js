@@ -6,13 +6,17 @@ var topics = ["bubbles","kittens","puppies","rainbow","teddy bear","unicorn","tw
 var randomIndex = 0;
 var usedRandomIndex = [];
 
+// Beginning of program
 $(document).ready(function(event) {
 	$("#message").hide();
+	// Generate buttons at start of program using array list
 	generateButtons();
+	// Add click event listener to generated buttons
 	$("#addToButtons").on("click", function(clickEvent) {
 		$("#buttonSelectSound")[0].currentTime = 0;
     	$("#buttonSelectSound")[0].play();
 		var searchValue = $("#searchPhrase").val();
+		// Convert text in input box to button only if it is not empty
 		if($("#searchPhrase").val()) {
 			clickEvent.preventDefault();
 			// checking for duplicates and adding only otherwise
@@ -22,11 +26,13 @@ $(document).ready(function(event) {
 				generateButtons();
 			}
 			else {
+				// Display message
 				$("#duplicatePrompt").show();
 			}
 		}
 	});
 
+	// On click of Clear button
 	$("#clearDisplay").on("click", function(clickEvent) {
 		$("#buttonSelectSound")[0].currentTime = 0;
     	$("#buttonSelectSound")[0].play();
@@ -37,13 +43,16 @@ $(document).ready(function(event) {
 
 });
 
+// Function to generate buttons in array
 function generateButtons() {
+	// Clearing buttons before refilling div
 	$("#buttonDisplay").empty();
 	for(var i=0; i<topics.length; i++) {
 		var button = $('<button class="giphyButtons button btn-2 btn-2c">');
 		button.data("value",topics[i]).text(topics[i]);
 		$("#buttonDisplay").append(button);
 	}
+	// Adding click event listener to each button after removing existing listener
 	$(".giphyButtons").off("click").on("click", function() {
 		$("#buttonSelectSound")[0].currentTime = 0;
     	$("#buttonSelectSound")[0].play();
@@ -56,14 +65,17 @@ function generateButtons() {
 	});
 }
 
+// Function to get 10 gifs from Giphy api 
 function getGiphys(searchTerm) {
 	// PseudoCode change: Using random indices to select 10 random gifs from 100 gifs got via ajax call 
 	// ** Got bored seeing same ones over and over again; Why wouldn't the users? **
 	var queryURL = "https://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
+	// Ajax call
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
+		// Clear existing gifs if any
 		$("#giphyDisplay").empty();
 		console.log(response);
 		var responseData = response.data;
@@ -78,16 +90,20 @@ function getGiphys(searchTerm) {
 			// Creating gif divs to hold giphy
 			var giphyDiv = $('<div class="giphyDiv">');
 			var giphy = $('<img class ="giphyImage img-responsive">');
+			// Set data for still and animated images
 			giphy.attr({"data-still":responseData[randomIndex].images.downsized_still.url, "data-animated":responseData[randomIndex].images.downsized.url, "data-state":"still"});
+			// Set src initially to still image
 			giphy.attr('src',responseData[randomIndex].images.downsized_still.url);
 			giphyDiv.append(giphy);
 			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating.toUpperCase() + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
 		}
+		// Add click event listener to each gif after removing earlier listener
 		$(".giphyImage").off("click").on("click", function() {
 			$("#gifClickSound")[0].currentTime = 0;
     		$("#gifClickSound")[0].play();
 			console.log("entering click function");
+			// Check the state (animated or still) of the gif, and change accordingly
 			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
 			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
 

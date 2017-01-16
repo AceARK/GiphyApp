@@ -12,12 +12,14 @@
 </head>
 <body>
 	<div class="container-fluid">
+		<!-- Heading -->
 		<div class="row text-center">
 			<div class="col-sm-12">
 				<h3>Giphy Fun</h1>
 				<h5>Click the <span class="green">Buttons</span> below to get gifs, or create your own <span class="green">Button</span> by entering a phrase in the <span id="yellow">search box</span> and clicking <span id="red">Generate Button</span>.</h5>
 			</div>
 		</div>
+		<!-- Form containing input box and main buttons -->
 		<div class="container">
 			<form id="giphySearch" class="text-center">
 				<div class="row">
@@ -34,11 +36,13 @@
 				</div>
 			</form>
 		</div>
+		<!-- Div to display dynamically generated buttons -->
 		<div class="row text-center">
 			<div class="col-xs-12">
 				<div id="buttonDisplay"></div>
 			</div>
 		</div>
+		<!-- Div to display gifs from Giphy -->
 		<div class="row">
 			<div class="col-xs-12 text-center">
 				<p id="message">Click once <span id="important">(and wait patiently. Trust me, once is enough.)</span> on the gifs below, and watch it animate. Click once more to make it freeze.</p>
@@ -46,6 +50,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- Audio files -->
 	<audio id="buttonSelectSound">
     	<source src="assets/sounds/buttonSelect.mp3">
 	</audio>
