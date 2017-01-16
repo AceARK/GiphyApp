@@ -1,7 +1,6 @@
 // Pseudocode
 // Buttons array with words, on load of page, call function that displays all words as buttons
 // Generate button on click, should add the words in input field to array, and call function to generate buttons in buttonDisplay div
-// Button.on click should make ajax call to giphy and get 10 giphys in giphyDisplay 
 // Clear button that clears giphys in giphyDisplay div
 var topics = ["bubbles","rainbow","moon","unicorn","stars","plush","twinkle","pink","shiny shoes","dancing","kittens","puppies"];
 var randomIndex = 0;
@@ -42,7 +41,7 @@ function generateButtons() {
 
 function getGiphys(searchTerm) {
 	// PseudoCode change: Using random indices to select 10 random gifs from 100 gifs got via ajax call 
-	// ** I got bored seeing same ones over and over again; Why would the users? **
+	// ** I got bored seeing same ones over and over again; Why wouldn't the users? **
 	var queryURL = "http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&limit=100&rating=pg&q=" + searchTerm;
 	$.ajax({
 		url: queryURL,

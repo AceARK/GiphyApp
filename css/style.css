@@ -118,3 +118,22 @@ form {
 span {
 	font-size: 22px;
 }
+
+/* Dynamically generated gif img style */
+.giphyDiv {
+	background-color: rgba(0,0,0,0.7);
+	display: inline-block;
+	color: white;
+	font-size: 22px;
+	margin: 15px;
+	border: 7px solid white;
+}
+
+.giphyDiv>p {
+	margin-top: 8px;
+}
+
+.giphyImage {
+	max-height: 200px;
+	max-width: 300px;
+}
