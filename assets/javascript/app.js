@@ -10,10 +10,18 @@ $(document).ready(function(event) {
 	$("#message").hide();
 	generateButtons();
 	$("#addToButtons").on("click", function(clickEvent) {
+		var searchValue = $("#searchPhrase").val();
 		if($("#searchPhrase").val()) {
 			clickEvent.preventDefault();
-			topics.push($("#searchPhrase").val());
-			generateButtons();
+			// checking for duplicates and adding only otherwise
+			if(!topics.includes(searchValue.toLowerCase())) {
+				$("#duplicatePrompt").hide();
+				topics.push(searchValue);
+				generateButtons();
+			}
+			else {
+				$("#duplicatePrompt").show();
+			}
 		}
 	});
 
@@ -33,6 +41,7 @@ function generateButtons() {
 	}
 	$(".giphyButtons").off("click").on("click", function() {
 		var buttonData = $(this).data("value");
+		buttonData = buttonData.replace(" ","+");
 		randomIndex = 0;
 		usedRandomIndex = [];
 		getGiphys(buttonData);

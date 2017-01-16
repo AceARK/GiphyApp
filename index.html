@@ -7,36 +7,41 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css">
-	<script type="text/javascript" src="javascript/app.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row text-center">
 			<div class="col-sm-12">
-				<h3>Cute Giphy</h1>
-				<h5>Click the <span class="green">Buttons</span> below to get cute gifs, or create your own <span class="green">Button</span> by entering a phrase in the <span id="yellow">search box</span> and clicking <span id="red">Generate Button</span>.</h5>
+				<h3>Giphy Fun</h1>
+				<h5>Click the <span class="green">Buttons</span> below to get gifs, or create your own <span class="green">Button</span> by entering a phrase in the <span id="yellow">search box</span> and clicking <span id="red">Generate Button</span>.</h5>
 			</div>
 		</div>
 		<div class="container">
-			<form id="giphySearch">
-				<div class="row text-center">
+			<form id="giphySearch" class="text-center">
+				<div class="row">
 					<div class="col-sm-12">
-					<input class="text-center" type="text" id="searchPhrase" placeholder="Giphy search term" required>
-				  	<button type="submit" class="button btn-2 btn-2c" id="addToButtons">Generate button</button>
-				  	<button class="button btn-2 btn-2c" id="clearDisplay">Clear Gifs</button>
+						<input class="text-center" type="text" id="searchPhrase" placeholder="Giphy search term" required>
+					  	<button type="submit" class="button btn-2 btn-2c" id="addToButtons">Generate button</button>
+					  	<button class="button btn-2 btn-2c" id="clearDisplay">Clear Gifs</button>
 				  	</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h5 id="duplicatePrompt">There's a button for it already.</h5>
+					</div>
 				</div>
 			</form>
 		</div>
-		<div class="row">
+		<div class="row text-center">
 			<div class="col-xs-12">
-				<div id="buttonDisplay" class="text-center"></div>
+				<div id="buttonDisplay"></div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<p id="message">Click once <span id="important">(and wait patiently. Trust me, once is enough.)</span> on the gifs below, and watch it animate.</p>
+				<p id="message">Click once <span id="important">(and wait patiently. Trust me, once is enough.)</span> on the gifs below, and watch it animate. Click once more to make it freeze.</p>
 				<div id="giphyDisplay" class="text-center"></div>
 			</div>
 		</div>

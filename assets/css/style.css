@@ -145,10 +145,15 @@ span {
 	display: none;
 	font-size: 23px;
 	font-weight: 700;
-	color: #ffd36d;
+	color: white;
 }
 
 #important {
 	color: #ffff84;
 	font-size: 26px;
+}
+
+#duplicatePrompt {
+	display: none;
+	color: white;
 }
