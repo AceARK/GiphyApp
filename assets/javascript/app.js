@@ -57,7 +57,6 @@ $(document).ready(function(event) {
 	$("#giphyDisplay").on("click", ".giphyImage", function() {
 			$("#gifClickSound")[0].currentTime = 0;
     		$("#gifClickSound")[0].play();
-			console.log("entering click function");
 			// Check the state (animated or still) of the gif, and change accordingly
 			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
 			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
@@ -88,7 +87,6 @@ function getGiphys(searchTerm) {
 	}).done(function(response) {
 		// Clear existing gifs if any
 		$("#giphyDisplay").empty();
-		console.log(response);
 		var responseData = response.data;
 		// Looping 10 times for 10 gifs
 		for(var i=0; i<10; i++) {
