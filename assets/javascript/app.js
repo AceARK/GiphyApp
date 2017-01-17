@@ -41,6 +41,29 @@ $(document).ready(function(event) {
 		$("#giphyDisplay").empty(); // avoiding using function clearDiv here since no other functionality is executed on clear i.e this is shorter
 	})
 
+	// On click of any button generated
+	$("#buttonDisplay").on("click", ".giphyButtons", function() {
+		$("#buttonSelectSound")[0].currentTime = 0;
+    	$("#buttonSelectSound")[0].play();
+		var buttonData = $(this).data("value");
+		buttonData = buttonData.replace(" ","+");
+		randomIndex = 0;
+		usedRandomIndex = [];
+		getGiphys(buttonData);
+		$("#searchPhrase").val("");
+	});
+
+	// Adding event listener to each gif image
+	$("#giphyDisplay").on("click", ".giphyImage", function() {
+			$("#gifClickSound")[0].currentTime = 0;
+    		$("#gifClickSound")[0].play();
+			console.log("entering click function");
+			// Check the state (animated or still) of the gif, and change accordingly
+			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
+			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
+
+		});
+
 });
 
 // Function to generate buttons in array
@@ -52,17 +75,6 @@ function generateButtons() {
 		button.data("value",topics[i]).text(topics[i]);
 		$("#buttonDisplay").append(button);
 	}
-	// Adding click event listener to each button after removing existing listener
-	$(".giphyButtons").off("click").on("click", function() {
-		$("#buttonSelectSound")[0].currentTime = 0;
-    	$("#buttonSelectSound")[0].play();
-		var buttonData = $(this).data("value");
-		buttonData = buttonData.replace(" ","+");
-		randomIndex = 0;
-		usedRandomIndex = [];
-		getGiphys(buttonData);
-		$("#searchPhrase").val("");
-	});
 }
 
 // Function to get 10 gifs from Giphy api 
@@ -97,16 +109,6 @@ function getGiphys(searchTerm) {
 			giphyDiv.append("<p>Gif Rating: " + responseData[randomIndex].rating.toUpperCase() + "</p>");
 			$('#giphyDisplay').append(giphyDiv);
 		}
-		// Add click event listener to each gif after removing earlier listener
-		$(".giphyImage").off("click").on("click", function() {
-			$("#gifClickSound")[0].currentTime = 0;
-    		$("#gifClickSound")[0].play();
-			console.log("entering click function");
-			// Check the state (animated or still) of the gif, and change accordingly
-			$(this).attr('data-state', $(this).attr('data-state') == 'still' ? 'animated' : 'still');
-			$(this).attr('src', $(this).attr('data-state') == 'still' ? $(this).attr('data-still') : $(this).attr('data-animated'));
-
-		});
 		$("#message").show();
 	});
 }
