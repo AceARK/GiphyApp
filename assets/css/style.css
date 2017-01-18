@@ -24,16 +24,16 @@ form {
 
 /* Default button style */
 .btn-2c:hover {
-    box-shadow: 0 7px #ab3c3c;
+    box-shadow: 0 5px #ab3c3c;
     top: 3px;
 }
 
 .btn-2c {
-    border-radius: 9px;
+    border-radius: 7px;
 }
 
 .btn-2 {
-    box-shadow: 0 9px #ab3c3c;
+    box-shadow: 0 7px #ab3c3c;
  }
 
 .button {
@@ -58,7 +58,7 @@ form {
 
 .btn-2c:active {
 	box-shadow: none;
-	top: 8px;
+	top: 7px;
 }
 
 /* Styling dynamically generated buttons */
@@ -69,11 +69,11 @@ form {
 }
 
 #buttonDisplay>.btn-2c:hover {
-	box-shadow: 0 7px #0a833d;
+	box-shadow: 0 5px #0a833d;
 }
 
 #buttonDisplay>.btn-2c {
-	box-shadow: 0 9px #0a833d;
+	box-shadow: 0 7px #0a833d;
 }
 
 #buttonDisplay>.btn-2c:active {
